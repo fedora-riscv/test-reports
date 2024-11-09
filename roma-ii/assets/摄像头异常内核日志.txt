@@ -1,0 +1,968 @@
+[    0.000000] Linux version 6.6.36+ (hezhengyu@toolbox) (riscv64-linux-gnu-gcc (GCC) 14.1.0, GNU ld (GNU Binutils) 2.42) #4 SMP PREEMPT Wed Oct  9 20:22:26 CST 2024
+[    0.000000] Machine model: M1-MUSE-BOOK
+[    0.000000] SBI specification v1.0 detected
+[    0.000000] SBI implementation ID=0x1 Version=0x10003
+[    0.000000] SBI IPI extension detected
+[    0.000000] SBI RFENCE extension detected
+[    0.000000] earlycon: pxa_serial0 at MMIO32 0x00000000d4017000 (options '115200n8')
+[    0.000000] printk: bootconsole [pxa_serial0] enabled
+[    0.000000] efi: UEFI not found.
+[    0.000000] Reserved memory: created CMA memory pool at 0x000000005d400000, size 384 MiB
+[    0.000000] OF: reserved mem: initialized node linux,cma, compatible id shared-dma-pool
+[    0.000000] OF: reserved mem: 0x000000005d400000..0x00000000753fffff (393216 KiB) map reusable linux,cma
+[    0.000000] OF: reserved mem: 0x0000000000000000..0x000000000007ffff (512 KiB) nomap non-reusable mmode_resv0@0
+[    0.000000] Reserved memory: created DMA memory pool at 0x000000002ff40000, size 0 MiB
+[    0.000000] OF: reserved mem: initialized node dpu_reserved@2ff40000, compatible id shared-dma-pool
+[    0.000000] OF: reserved mem: 0x000000002ff40000..0x000000002fffffff (768 KiB) nomap non-reusable dpu_reserved@2ff40000
+[    0.000000] OF: reserved mem: 0x0000000030000000..0x00000000301fffff (2048 KiB) nomap non-reusable mem@30000000
+[    0.000000] OF: reserved mem: 0x0000000030200000..0x0000000030202fff (12 KiB) nomap non-reusable vdev0vring0@30200000
+[    0.000000] OF: reserved mem: 0x0000000030203000..0x0000000030205fff (12 KiB) nomap non-reusable vdev0vring1@30203000
+[    0.000000] Reserved memory: created DMA memory pool at 0x0000000030206000, size 0 MiB
+[    0.000000] OF: reserved mem: initialized node vdev0buffer@30206000, compatible id shared-dma-pool
+[    0.000000] OF: reserved mem: 0x0000000030206000..0x00000000302fbfff (984 KiB) nomap non-reusable vdev0buffer@30206000
+[    0.000000] OF: reserved mem: 0x00000000302fc000..0x00000000302fffff (16 KiB) nomap non-reusable rsc_table@302fc000
+[    0.000000] OF: reserved mem: 0x0000000030300000..0x000000003033ffff (256 KiB) nomap non-reusable rcpu_mem_snapshots@30300000
+[    0.000000] OF: reserved mem: 0x0000000080000000..0x00000000c07fffff (1056768 KiB) nomap non-reusable area_reserved@80000000
+[    0.000000] OF: reserved mem: 0x00000000c0800000..0x00000000c083ffff (256 KiB) nomap non-reusable mem@c0800000
+[    0.000000] OF: reserved mem: 0x00000000c0840000..0x00000000ffffffff (1040128 KiB) nomap non-reusable area_reserved@c0840000
+[    0.000000] Zone ranges:
+[    0.000000]   DMA32    [mem 0x0000000000000000-0x000000007fffffff]
+[    0.000000]   Normal   [mem 0x0000000080000000-0x000000027fffffff]
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000000000000-0x000000000007ffff]
+[    0.000000]   node   0: [mem 0x0000000000080000-0x000000002ff3ffff]
+[    0.000000]   node   0: [mem 0x000000002ff40000-0x000000003033ffff]
+[    0.000000]   node   0: [mem 0x0000000030340000-0x000000007fffffff]
+[    0.000000]   node   0: [mem 0x0000000100000000-0x000000027fffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000000000000-0x000000027fffffff]
+[    0.000000] On node 0, zone Normal: 524288 pages in unavailable ranges
+[    0.000000] SBI HSM extension detected
+[    0.000000] riscv: base ISA extensions acdfimv
+[    0.000000] riscv: ELF capabilities acdfimv
+[    0.000000] percpu: Embedded 29 pages/cpu s81272 r8192 d29320 u118784
+[    0.000000] pcpu-alloc: s81272 r8192 d29320 u118784 alloc=29*4096
+[    0.000000] pcpu-alloc: [0] 0 [0] 1 [0] 2 [0] 3 [0] 4 [0] 5 [0] 6 [0] 7 
+[    0.000000] Kernel command line: console=ttyS0,115200 root=UUID=9b226192-90e9-4694-a253-afe05230538f rootfstype=ext4 rootwait rw earlycon clk_ignore_unused loglevel=7
+[    0.000000] Dentry cache hash table entries: 1048576 (order: 11, 8388608 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 524288 (order: 10, 4194304 bytes, linear)
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 2056192
+[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+[    0.000000] software IO TLB: area num 8.
+[    0.000000] software IO TLB: mapped [mem 0x000000007c000000-0x0000000080000000] (64MB)
+[    0.000000] Memory: 7682428K/8388608K available (15552K kernel code, 6830K rwdata, 8192K rodata, 2307K init, 583K bss, 312964K reserved, 393216K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=8, Nodes=1
+
+[    0.000000] **********************************************************
+[    0.000000] **   NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE   **
+[    0.000000] **                                                      **
+[    0.000000] ** trace_printk() being used. Allocating extra memory.  **
+[    0.000000] **                                                      **
+[    0.000000] ** This means that this is a DEBUG kernel and it is     **
+[    0.000000] ** unsafe for production use.                           **
+[    0.000000] **                                                      **
+[    0.000000] ** If you see this message and you are not debugging    **
+[    0.000000] ** the kernel, report this immediately to your vendor!  **
+[    0.000000] **                                                      **
+[    0.000000] **   NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE NOTICE   **
+[    0.000000] **********************************************************
+[    0.000000] trace event string verifier disabled
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] 	Trampoline variant of Tasks RCU enabled.
+[    0.000000] 	Tracing variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] riscv-intc: 64 local interrupts mapped
+[    0.000000] plic: interrupt-controller@e0000000: mapped 159 interrupts with 8 handlers for 16 contexts.
+[    0.000000] riscv: providing IPIs using SBI IPI extension
+[    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    0.000000] riscv-timer: Timer interrupt in S-mode is available via sstc extension
+[    0.000000] clocksource: riscv_clocksource: mask: 0xffffffffffffffff max_cycles: 0x588fe9dc0, max_idle_ns: 440795202592 ns
+[    0.000000] sched_clock: 64 bits at 24MHz, resolution 41ns, wraps every 4398046511097ns
+[    0.008603] kfence: initialized - using 2097152 bytes for 255 objects at 0x(____ptrval____)-0x(____ptrval____)
+[    0.018741] Console: colour dummy device 80x25
+[    0.023140] Calibrating delay loop (skipped), value calculated using timer frequency.. 48.00 BogoMIPS (lpj=96000)
+[    0.033346] pid_max: default: 32768 minimum: 301
+[    0.038026] LSM: initializing lsm=capability,landlock,apparmor,integrity
+[    0.044697] landlock: Up and running.
+[    0.048360] AppArmor: AppArmor initialized
+[    0.052484] Mount-cache hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    0.059997] Mountpoint-cache hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    0.070282] RCU Tasks: Setting shift to 3 and lim to 1 rcu_task_cb_adjust=1.
+[    0.077394] RCU Tasks Trace: Setting shift to 3 and lim to 1 rcu_task_cb_adjust=1.
+[    0.084956] riscv: ELF compat mode unsupported
+[    0.084987] ASID allocator using 16 bits (65536 entries)
+[    0.094751] rcu: Hierarchical SRCU implementation.
+[    0.099456] rcu: 	Max phase no-delay instances is 1000.
+[    0.105206] EFI services will not be available.
+[    0.110326] smp: Bringing up secondary CPUs ...
+[    0.122402] smp: Brought up 1 node, 8 CPUs
+[    0.130594] devtmpfs: initialized
+[    0.144485] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.154193] futex hash table entries: 2048 (order: 5, 131072 bytes, linear)
+[    0.165899] pinctrl core: initialized pinctrl subsystem
+[    0.173080] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.180192] DMA: preallocated 1024 KiB GFP_KERNEL pool for atomic allocations
+[    0.187449] DMA: preallocated 1024 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
+[    0.195433] audit: initializing netlink subsys (disabled)
+[    0.201005] audit: type=2000 audit(0.120:1): state=initialized audit_enabled=0 res=1
+[    0.201280] display class register
+[    0.212207] thermal_sys: Registered thermal governor 'step_wise'
+[    0.212262] cpuidle: using governor menu
+[    0.246221] cpu3: Ratio of byte access time to unaligned word access is 2.07, unaligned accesses are fast
+[    0.246220] cpu1: Ratio of byte access time to unaligned word access is 2.00, unaligned accesses are fast
+[    0.246221] cpu2: Ratio of byte access time to unaligned word access is 2.20, unaligned accesses are fast
+[    0.246216] cpu7: Ratio of byte access time to unaligned word access is 1.54, unaligned accesses are fast
+[    0.246216] cpu5: Ratio of byte access time to unaligned word access is 1.64, unaligned accesses are fast
+[    0.246215] cpu6: Ratio of byte access time to unaligned word access is 1.69, unaligned accesses are fast
+[    0.246216] cpu4: Ratio of byte access time to unaligned word access is 1.73, unaligned accesses are fast
+[    0.334285] cpu0: Ratio of byte access time to unaligned word access is 10.12, unaligned accesses are fast
+[    0.343864] The real ratio of byte access time to unaligned word access should refer to the value of CPU0
+[    0.353396] Cpu0 unaligned access is more efficient than nonboot cores, because of system bandwidth preemption.
+[    0.363466] Nonboot cpus' unaligned access ratio measured simultaneously, but cpu0's measure is separately
+[    0.373117] suspend: SBI SUSP extension detected
+[    0.382418] platform soc: Fixed dependency cycle(s) with /soc/hdmi@C0400500
+[    0.389316] platform soc: Fixed dependency cycle(s) with /soc/wb0
+[    0.395397] platform soc: Fixed dependency cycle(s) with /soc/dsi2@d421a800
+[    0.403672] platform d401e000.pinctrl: Fixed dependency cycle(s) with /soc/interrupt-controller@e0000000
+[    0.413127] platform d401e000.pinctrl: Fixed dependency cycle(s) with /soc/reset-controller@d4050000
+[    0.422206] platform d401e000.pinctrl: Fixed dependency cycle(s) with /soc/clock-controller@d4050000
+[    0.432917] pinctrl-single d401e000.pinctrl: 148 pins, size 592
+[    0.442607] platform d4018800.i2c: Fixed dependency cycle(s) with /soc/reset-controller@d4050000
+[    0.451350] platform d4018800.i2c: Fixed dependency cycle(s) with /soc/clock-controller@d4050000
+[    0.460094] platform d4018800.i2c: Fixed dependency cycle(s) with /soc/interrupt-controller@e0000000
+[    0.470501] platform d4019000.gpio: Fixed dependency cycle(s) with /soc/clock-controller@d4050000
+[    0.479310] platform d4019000.gpio: Fixed dependency cycle(s) with /soc/interrupt-controller@e0000000
+[    0.494131] platform soc: Fixed dependency cycle(s) with /soc/dsi2@d421a800
+[    0.501119] platform d421a800.dsi2: Fixed dependency cycle(s) with /soc
+[    0.507705] platform d421a800.dsi2: Fixed dependency cycle(s) with /soc/i2c@d4018800/lt8911exb_i2c@29
+[    0.516854] platform d421a800.dsi2: Fixed dependency cycle(s) with /soc/dphy2@d421a800
+[    0.524750] platform d421a800.dsi2: Fixed dependency cycle(s) with /soc/interrupt-controller@e0000000
+[    0.534055] platform d421a800.dsi2: Fixed dependency cycle(s) with /soc/dphy2@d421a800
+[    0.541972] platform d421a800.dphy2: Fixed dependency cycle(s) with /soc/dsi2@d421a800
+[    0.549916] platform soc: Fixed dependency cycle(s) with /soc/wb0
+[    0.555975] platform soc:wb0: Fixed dependency cycle(s) with /soc
+[    0.562449] platform soc: Fixed dependency cycle(s) with /soc/hdmi@C0400500
+[    0.569452] platform c0400500.hdmi: Fixed dependency cycle(s) with /soc
+[    0.576062] platform c0400500.hdmi: Fixed dependency cycle(s) with /soc/reset-controller@d4050000
+[    0.584853] platform c0400500.hdmi: Fixed dependency cycle(s) with /soc/clock-controller@d4050000
+[    0.593719] platform c0400500.hdmi: Fixed dependency cycle(s) with /soc/interrupt-controller@e0000000
+[    0.610780] HugeTLB: registered 1.00 GiB page size, pre-allocated 0 pages
+[    0.617491] HugeTLB: 0 KiB vmemmap can be freed for a 1.00 GiB page
+[    0.623735] HugeTLB: registered 64.0 KiB page size, pre-allocated 0 pages
+[    0.630503] HugeTLB: 0 KiB vmemmap can be freed for a 64.0 KiB page
+[    0.636754] HugeTLB: registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.643524] HugeTLB: 0 KiB vmemmap can be freed for a 2.00 MiB page
+[    0.716153] raid6: int64x8  gen()  1111 MB/s
+[    0.788208] raid6: int64x4  gen()  1758 MB/s
+[    0.860248] raid6: int64x2  gen()  1669 MB/s
+[    0.932338] raid6: int64x1  gen()  1354 MB/s
+[    0.936559] raid6: using algorithm int64x4 gen() 1758 MB/s
+[    1.008352] raid6: .... xor() 912 MB/s, rmw enabled
+[    1.013134] raid6: using intx1 recovery algorithm
+[    1.018433] gpio gpiochip0: Static allocation of GPIO base is deprecated, use dynamic allocation.
+[    1.029109] mmp-pdma d4000000.pdma: PM domain power-domain@SPT_PD_BUS will not be powered off
+[    1.032529] SCSI subsystem initialized
+[    1.041482] libata version 3.00 loaded.
+[    1.041652] usbcore: registered new interface driver usbfs
+[    1.047086] usbcore: registered new interface driver hub
+[    1.052382] usbcore: registered new device driver usb
+[    1.060751] platform d421a800.dsi2: Fixed dependency cycle(s) with /soc/i2c@d4018800/lt8911exb_i2c@29
+[    1.070094] i2c 6-0029: Fixed dependency cycle(s) with /soc/dsi2@d421a800
+[    1.078062] i2c 8-0041: Fixed dependency cycle(s) with /soc/i2c@d401d800/spm8821@41/regulators/DCDC_REG5
+[    1.103663] spacemit-regulator spacemit-regulator@spm8821: DMA mask not set
+[    1.158073] spacemit-pmic 8-0041: Fixed dependency cycle(s) with /soc/i2c@d401d800/spm8821@41/regulators
+[    1.168511] mc: Linux media interface: v0.10
+[    1.172777] videodev: Linux video capture interface: v2.00
+[    1.178226] pps_core: LinuxPPS API ver. 1 registered
+[    1.183117] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    1.192239] PTP clock support registered
+[    1.196923] Advanced Linux Sound Architecture Driver Initialized.
+[    1.203481] Bluetooth: Core ver 2.22
+[    1.207019] NET: Registered PF_BLUETOOTH protocol family
+[    1.212267] Bluetooth: HCI device and connection manager initialized
+[    1.218608] Bluetooth: HCI socket layer initialized
+[    1.223466] Bluetooth: L2CAP socket layer initialized
+[    1.228508] Bluetooth: SCO socket layer initialized
+[    1.233585] mctp: management component transport protocol core
+[    1.239328] NET: Registered PF_MCTP protocol family
+[    1.244304] vgaarb: loaded
+[    1.247374] clocksource: Switched to clocksource riscv_clocksource
+[    1.253908] VFS: Disk quotas dquot_6.6.0
+[    1.257848] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    1.267636] AppArmor: AppArmor Filesystem Enabled
+[    1.279983] NET: Registered PF_INET protocol family
+[    1.285133] IP idents hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+[    1.299305] tcp_listen_portaddr_hash hash table entries: 4096 (order: 5, 131072 bytes, linear)
+[    1.307951] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    1.315621] TCP established hash table entries: 65536 (order: 7, 524288 bytes, linear)
+[    1.323877] TCP bind hash table entries: 65536 (order: 10, 4194304 bytes, linear)
+[    1.335111] TCP: Hash tables configured (established 65536 bind 65536)
+[    1.342011] MPTCP token hash table entries: 8192 (order: 6, 393216 bytes, linear)
+[    1.349757] UDP hash table entries: 4096 (order: 6, 393216 bytes, linear)
+[    1.356768] UDP-Lite hash table entries: 4096 (order: 6, 393216 bytes, linear)
+[    1.364532] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    1.370839] RPC: Registered named UNIX socket transport module.
+[    1.376688] RPC: Registered udp transport module.
+[    1.381357] RPC: Registered tcp transport module.
+[    1.386042] RPC: Registered tcp-with-tls transport module.
+[    1.391530] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    1.398823] NET: Registered PF_XDP protocol family
+[    1.403555] PCI: CLS 0 bytes, default 64
+[    1.407646] Unpacking initramfs...
+[    1.412566] Initialise system trusted keyrings
+[    1.417191] workingset: timestamp_bits=46 max_order=21 bucket_order=0
+[    1.428880] NFS: Registering the id_resolver key type
+[    1.433913] Key type id_resolver registered
+[    1.438050] Key type id_legacy registered
+[    1.442069] nfs4filelayout_init: NFSv4 File Layout Driver Registering...
+[    1.448722] nfs4flexfilelayout_init: NFSv4 Flexfile Layout Driver Registering...
+[    2.409677] Freeing initrd memory: 27296K
+[    2.431139] Key type cifs.spnego registered
+[    2.435487] Key type cifs.idmap registered
+[    2.439736] ntfs: driver 2.1.32 [Flags: R/W].
+[    2.444085] ntfs3: Enabled Linux POSIX ACLs support
+[    2.448878] ntfs3: Read-only LZX/Xpress compression included
+[    2.454556] fuse: init (API version 7.39)
+[    2.495864] xor: measuring software checksum speed
+[    2.502653]    8regs           :  4769 MB/sec
+[    2.508991]    32regs          :  4769 MB/sec
+[    2.514969]    rvv             :  5748 MB/sec
+[    2.519228] xor: using function: rvv (5748 MB/sec)
+[    2.524007] async_tx: api initialized (async)
+[    2.528353] Key type asymmetric registered
+[    2.532426] Asymmetric key parser 'x509' registered
+[    2.537581] io scheduler mq-deadline registered
+[    2.542038] io scheduler kyber registered
+[    2.546064] io scheduler bfq registered
+[    2.552058] spacemit-pmic-pinctrl spacemit-pinctrl@spm8821: DMA mask not set
+[    2.562934] k1x-dwc-pcie ca400000.pcie: has no power on gpio.
+[    2.570831] k1x-dwc-pcie ca400000.pcie: host bridge /soc/pcie@ca400000 ranges:
+[    2.577999] k1x-dwc-pcie ca400000.pcie:       IO 0x009f002000..0x009f101fff -> 0x009f002000
+[    2.586316] k1x-dwc-pcie ca400000.pcie:      MEM 0x0090000000..0x009effffff -> 0x0090000000
+[    2.694762] k1x-dwc-pcie ca400000.pcie: iATU: unroll T, 8 ob, 8 ib, align 4K, limit 4G
+[    2.802637] k1x-dwc-pcie ca400000.pcie: PCIe Gen.1 x1 link up
+[    2.808646] k1x-dwc-pcie ca400000.pcie: PCI host bridge to bus 0001:00
+[    2.815109] pci_bus 0001:00: root bus resource [bus 00-ff]
+[    2.820562] pci_bus 0001:00: root bus resource [io  0x0000-0xfffff] (bus address [0x9f002000-0x9f101fff])
+[    2.830106] pci_bus 0001:00: root bus resource [mem 0x90000000-0x9effffff]
+[    2.836993] pci 0001:00:00.0: [201f:0001] type 01 class 0x060400
+[    2.842968] pci 0001:00:00.0: reg 0x10: [mem 0x00000000-0x000fffff]
+[    2.849216] pci 0001:00:00.0: reg 0x14: [mem 0x00000000-0x000fffff]
+[    2.855509] pci 0001:00:00.0: supports D1
+[    2.859448] pci 0001:00:00.0: PME# supported from D0 D1 D3hot D3cold
+[    2.868880] pci 0001:01:00.0: [10ec:b852] type 00 class 0x028000
+[    2.874870] pci 0001:01:00.0: reg 0x10: initial BAR value 0x00000000 invalid
+[    2.881835] pci 0001:01:00.0: reg 0x10: [io  size 0x0100]
+[    2.887297] pci 0001:01:00.0: reg 0x18: [mem 0x00000000-0x000fffff 64bit]
+[    2.894413] pci 0001:01:00.0: PME# supported from D0 D3hot D3cold
+[    2.911465] pci_bus 0001:01: busn_res: [bus 01-ff] end is updated to 01
+[    2.918027] pci 0001:00:00.0: BAR 0: assigned [mem 0x90000000-0x900fffff]
+[    2.924775] pci 0001:00:00.0: BAR 1: assigned [mem 0x90100000-0x901fffff]
+[    2.931543] pci 0001:00:00.0: BAR 8: assigned [mem 0x90200000-0x902fffff]
+[    2.938310] pci 0001:00:00.0: BAR 7: assigned [io  0x1000-0x1fff]
+[    2.944389] pci 0001:01:00.0: BAR 2: assigned [mem 0x90200000-0x902fffff 64bit]
+[    2.951714] pci 0001:01:00.0: BAR 0: assigned [io  0x1000-0x10ff]
+[    2.957766] pci 0001:00:00.0: PCI bridge to [bus 01]
+[    2.962706] pci 0001:00:00.0:   bridge window [io  0x1000-0x1fff]
+[    2.968780] pci 0001:00:00.0:   bridge window [mem 0x90200000-0x902fffff]
+[    2.977377] pcieport 0001:00:00.0: PME: Signaling with IRQ 67
+[    2.983450] pcieport 0001:00:00.0: AER: enabled with IRQ 67
+[    2.989592] k1x-dwc-pcie ca800000.pcie: has no power on gpio.
+[    2.997735] k1x-dwc-pcie ca800000.pcie: host bridge /soc/pcie@ca800000 ranges:
+[    3.004908] k1x-dwc-pcie ca800000.pcie:       IO 0x00b7002000..0x00b7101fff -> 0x00b7002000
+[    3.013217] k1x-dwc-pcie ca800000.pcie:      MEM 0x00a0000000..0x00b6ffffff -> 0x00a0000000
+[    3.121660] k1x-dwc-pcie ca800000.pcie: iATU: unroll T, 8 ob, 8 ib, align 4K, limit 4G
+[    3.229538] k1x-dwc-pcie ca800000.pcie: PCIe Gen.2 x2 link up
+[    3.235339] k1x-dwc-pcie ca800000.pcie: PCI host bridge to bus 0002:00
+[    3.241787] pci_bus 0002:00: root bus resource [bus 00-ff]
+[    3.247246] pci_bus 0002:00: root bus resource [io  0x100000-0x1fffff] (bus address [0xb7002000-0xb7101fff])
+[    3.257050] pci_bus 0002:00: root bus resource [mem 0xa0000000-0xb6ffffff]
+[    3.263934] pci 0002:00:00.0: [201f:0001] type 01 class 0x060400
+[    3.269916] pci 0002:00:00.0: reg 0x10: [mem 0x00000000-0x000fffff]
+[    3.276152] pci 0002:00:00.0: reg 0x14: [mem 0x00000000-0x000fffff]
+[    3.282444] pci 0002:00:00.0: supports D1
+[    3.286392] pci 0002:00:00.0: PME# supported from D0 D1 D3hot D3cold
+[    3.295848] pci 0002:01:00.0: [1e4b:1202] type 00 class 0x010802
+[    3.301838] pci 0002:01:00.0: reg 0x10: [mem 0x00000000-0x00003fff 64bit]
+[    3.308902] pci 0002:01:00.0: PME# supported from D0 D3hot D3cold
+[    3.315032] pci 0002:01:00.0: 8.000 Gb/s available PCIe bandwidth, limited by 5.0 GT/s PCIe x2 link at 0002:00:00.0 (capable of 31.504 Gb/s with 8.0 GT/s PCIe x4 link)
+[    3.330258] pci_bus 0002:01: busn_res: [bus 01-ff] end is updated to 01
+[    3.336807] pci 0002:00:00.0: BAR 0: assigned [mem 0xa0000000-0xa00fffff]
+[    3.343562] pci 0002:00:00.0: BAR 1: assigned [mem 0xa0100000-0xa01fffff]
+[    3.350326] pci 0002:00:00.0: BAR 8: assigned [mem 0xa0200000-0xa02fffff]
+[    3.357097] pci 0002:01:00.0: BAR 0: assigned [mem 0xa0200000-0xa0203fff 64bit]
+[    3.364411] pci 0002:00:00.0: PCI bridge to [bus 01]
+[    3.369336] pci 0002:00:00.0:   bridge window [mem 0xa0200000-0xa02fffff]
+[    3.377947] pcieport 0002:00:00.0: PME: Signaling with IRQ 71
+[    3.384021] pcieport 0002:00:00.0: AER: enabled with IRQ 71
+[    3.391059] input: spacemit_lid as /devices/platform/spacemit_lid/input/input0
+[    3.401496] spacemit-wlan rf-pwrseq:wlan-pwrseq: error -ENXIO: IRQ index 0 not found
+[    3.409350] spacemit-wlan rf-pwrseq:wlan-pwrseq: get hostwake irq failed, ignore wow
+[    3.460222] d4017000.serial: ttyS0 at MMIO 0xd4017000 (irq = 74, base_baud = 921250) is a UART1
+[    3.469028] printk: console [ttyS0] enabled
+[    3.477356] printk: bootconsole [pxa_serial0] disabled
+[    3.492448] d4017200.uart: ttyS2 at MMIO 0xd4017200 (irq = 75, base_baud = 3600000) is a UART3
+[    3.501262] serial_pxa_set_mctrl: rts: 0x0
+[    3.603988] [drm] spacemit_dsi_probe()
+[    3.911768] [drm] /soc/dsi2@d421a800: find lcd_lt8911_edp_1920x1080 node
+[    3.918721] [drm] spacemit_dsi_host_attach()
+[    3.924766] PVR_K:(Error):     1: TraceFS not found in PVRGpuTraceInitFTraceClockSource() [198]
+[    3.934658] PVR_K:  1: Read BVNC 36.29.52.182 from HW device registers
+[    3.941335] PVR_K:  1: RGX Device registered BVNC 36.29.52.182 with 1 core in the system
+[    3.950406] [drm] Initialized pvr 23.2.6460340 20170530 for cac00000.imggpu on minor 0
+[    3.966529] loop: module loaded
+[    3.970238] zram: Added device: zram0
+[    3.974265] at24 2-0050: 256 byte 24c02 EEPROM, writable, 1 bytes/write
+[    3.983596] nvme nvme0: pci function 0002:01:00.0
+[    3.988596] Rounding down aligned max_sectors from 4294967295 to 4294967288
+[    3.991406] nvme 0002:01:00.0: enabling device (0000 -> 0002)
+[    3.995878] db_root: cannot open: /etc/target
+[    4.007100] k1x-qspi d420c000.spi: config mfp for cs:[0]
+[    4.008014] nvme nvme0: allocated 16 MiB host memory buffer.
+[    4.012665] k1x-qspi d420c000.spi: AHB buf size: 512
+[    4.023948] k1x-qspi d420c000.spi: RX buffer overflow
+[    4.030032] spi-nor spi4.0: FM25Q64AI3 (8192 Kbytes)
+[    4.041598] nvme nvme0: 8/0/0 default/read/poll queues
+[    4.049456] k1x-qspi d420c000.spi: Runtime PM usage count underflow!
+[    4.050468] nvme nvme0: Ignoring bogus Namespace Identifiers
+[    4.056956] tun: Universal TUN/TAP device driver, 1.6
+[    4.064996]  nvme0n1: p1 p2 p3 p4 p5 p6
+[    4.067070] CAN device driver interface
+[    4.075102] PPP generic driver version 2.4.2
+[    4.079868] usbcore: registered new interface driver cdc_ether
+[    4.085820] usbcore: registered new interface driver cdc_subset
+[    4.091841] usbcore: registered new interface driver zaurus
+[    4.098218] k1x-ci-otg c0900100.otg: k1x otg probe enter ...
+[    4.104618] mvotg populate connector
+[    4.108269] k1x-ci-otg mv-otg: successful probe OTG device.
+[    4.115048] spacemit-k1x-combphy c0b10000.phy: USB3 PHY init.
+[    4.122815] mv-ehci mv-ehci: mode: MV_USB_MODE_OTG ...
+[    4.128685] mv-ehci mv-ehci1: Spacemit EHCI
+[    4.132990] mv-ehci mv-ehci1: new USB bus registered, assigned bus number 1
+[    4.140182] mv-ehci mv-ehci1: irq 91, io mem 0xc0980100
+[    4.159374] mv-ehci mv-ehci1: USB 2.0 started, EHCI 1.00
+[    4.165497] hub 1-0:1.0: USB hub found
+[    4.169355] hub 1-0:1.0: 1 port detected
+[    4.174463] xhci-hcd xhci-hcd.0.auto: xHCI Host Controller
+[    4.180064] xhci-hcd xhci-hcd.0.auto: new USB bus registered, assigned bus number 2
+[    4.188033] xhci-hcd xhci-hcd.0.auto: hcc params 0x0220fe6d hci version 0x110 quirks 0x0000008000000010
+[    4.197681] xhci-hcd xhci-hcd.0.auto: irq 88, io mem 0xc0a00000
+[    4.203852] xhci-hcd xhci-hcd.0.auto: xHCI Host Controller
+[    4.209432] xhci-hcd xhci-hcd.0.auto: new USB bus registered, assigned bus number 3
+[    4.217202] xhci-hcd xhci-hcd.0.auto: Host supports USB 3.0 SuperSpeed
+[    4.224465] hub 2-0:1.0: USB hub found
+[    4.228324] hub 2-0:1.0: 1 port detected
+[    4.232641] usb usb3: We don't know the algorithms for LPM for this host, disabling LPM.
+[    4.241343] hub 3-0:1.0: USB hub found
+[    4.245189] hub 3-0:1.0: 1 port detected
+[    4.249820] usbcore: registered new interface driver uas
+[    4.255271] usbcore: registered new interface driver usb-storage
+[    4.261620] spacemit-usb3-hub soc:usb3hub@0: v1.0.2
+[    4.266731] spacemit-usb3-hub soc:usb3hub@0: onboard usb hub driver probed, hub configured
+[    4.275586] K1X_UDC: mv_udc_probe enter ...
+[    4.280164] mv-udc mv-udc:  use 32bit DMA mask
+[    4.284704] mv_udc: dqh size = 0x800  udc->ep_dqh_dma = 0x7600d000
+[    4.291342] mv-udc mv-udc: successful probe UDC device with clock gating.
+[    4.298514] f_tcm: UAS support multiple cmds
+[    4.303279] Gt9xx driver installing..
+[    4.307476] spacemit-pmic-pwrkey spacemit-pwrkey@spm8821: DMA mask not set
+[    4.366892] input: spacemit pwrkey as /devices/platform/soc/d401d800.i2c/i2c-8/8-0041/spacemit-pwrkey@spm8821/input/input1
+[    4.379142] spacemit-pmic-rtc spacemit-rtc@spm8821: DMA mask not set
+[    4.412737] spacemit-pmic-rtc spacemit-rtc@spm8821: registered as rtc0
+[    4.424659] spacemit-pmic-rtc spacemit-rtc@spm8821: setting system clock to 2024-10-18T06:27:13 UTC (1729232833)
+[    4.435384] usb 1-1: new high-speed USB device number 2 using mv-ehci
+[    4.442539] i2c_dev: i2c /dev entries driver
+[    4.450551] MVX dev: Linlon v5276 identified. cores=2, nlsid=4, id=0, fuse=00000000, hw_id=00005276, hw_rev=00000050
+[    4.462316] usbcore: registered new interface driver uvcvideo
+[    4.469926] sbs-battery 5-000b: sbs-battery: battery gas gauge device registered
+[    4.477991] sbs-charger-virtual charger@b: SBS charger virtual driver probed successfully
+[    4.489978] device-mapper: core: CONFIG_IMA_DISABLE_HTABLE is disabled. Duplicate IMA measurements will not be recorded in the IMA log.
+[    4.502516] device-mapper: uevent: version 1.0.3
+[    4.507596] device-mapper: ioctl: 4.48.0-ioctl (2023-03-01) initialised: dm-devel@redhat.com
+[    4.516772] device-mapper: multipath round-robin: version 1.2.0 loaded
+[    4.523466] device-mapper: multipath queue-length: version 0.2.0 loaded
+[    4.530193] device-mapper: multipath service-time: version 0.3.0 loaded
+[    4.536901] device-mapper: multipath historical-service-time: version 0.1.1 loaded
+[    4.544685] Bluetooth: HCI UART driver ver 2.3
+[    4.549212] Bluetooth: HCI UART protocol H4 registered
+[    4.549258] sbs-charger-virtual charger@b: Battery status changed to 2
+[    4.554467] Bluetooth: HCI UART protocol Three-wire (H5) registered
+[    4.567471] Spacemit Platform with no 'svt-dro' in DTS, using defualt frequency Table0
+[    4.575532] Spacemit Platform with no 'product-id' in DTS
+[    4.581000] Spacemit Platform with no 'product-id' in DTS
+[    4.589588] sdhci: Secure Digital Host Controller Interface driver
+[    4.595912] sdhci: Copyright(c) Pierre Ossman
+[    4.600309] sdhci-pltfm: SDHCI platform and OF driver helper
+[    4.606682] sdhci-spacemit d4280000.sdh: Got CD GPIO
+[    4.613951] hub 1-1:1.0: USB hub found
+[    4.618194] hub 1-1:1.0: 4 ports detected
+[    4.618586] sbs-battery 5-000b: I2C adapter does not support I2C_FUNC_SMBUS_READ_BLOCK_DATA.
+               Fallback method does not support PEC.
+[    4.639149] sbs-battery 5-000b: Unknown chemistry: 2620
+[    4.647178] mmc0: SDHCI controller on d4280000.sdh [d4280000.sdh] using ADMA
+[    4.679396] mmc1: SDHCI controller on d4280800.sdh [d4280800.sdh] using ADMA
+[    4.686527] sdio: save sdio_host <- (____ptrval____)
+[    4.752448] mmc0: set tx_delaycode: 127
+[    4.760028] mmc0: pass window [0 77) 
+[    4.767375] mmc0: pass window [82 176) 
+[    4.771314] mmc0: pass window [177 178) 
+[    4.775366] mmc0: pass window [179 180) 
+[    4.782014] mmc0: pass window [192 255) 
+[    4.785968] mmc0: tuning done, use the firstly delay_code:128
+[    4.791784] mmc0: new ultra high speed SDR104 SDHC card at address aaaa
+[    4.799707] mmcblk0: mmc0:aaaa SH32G 29.7 GiB
+[    4.810381]  mmcblk0: p1 p2 p3 p4 p5 p6
+[    4.857407] mmc2: Failed to initialize a non-removable card
+[    4.857424] mmc2: SDHCI controller on d4281000.sdh [d4281000.sdh] using ADMA
+[    4.872699] usbcore: registered new interface driver usbhid
+[    4.878371] usbhid: USB HID core driver
+[    4.882887] i2c_hid_of 4-002d: supply vdd not found, using dummy regulator
+[    4.888519] remoteproc remoteproc0: rcpu_rproc is available
+[    4.890034] i2c_hid_of 4-002d: supply vddl not found, using dummy regulator
+[    4.895543] remoteproc remoteproc0: powering up rcpu_rproc
+[    4.911430] usb 1-1.3: new high-speed USB device number 3 using mv-ehci
+[    4.923998] remoteproc remoteproc0: Booting fw image esos.elf, size 585988
+[    4.932623] rproc-virtio rproc-virtio.2.auto: assigned reserved memory node vdev0buffer@30206000
+[    4.945502] virtio_rpmsg_bus virtio0: rpmsg host is online
+[    4.951098] rproc-virtio rproc-virtio.2.auto: registered virtio0 (type 7)
+[    4.951094] virtio_rpmsg_bus virtio0: creating channel can-service addr 0x400
+[    4.957969] remoteproc remoteproc0: remote processor rcpu_rproc is now up
+[    4.965356] flexcan virtio0.can-service.-1.1024: new channel: 0x400 -> 0x400!
+[    4.972820] spacemit-pmic-adc spacemit-adc@spm8821: DMA mask not set
+[    4.979433] virtio_rpmsg_bus virtio0: creating channel rir-service addr 0x401
+[    4.992920] ir_spacemit virtio0.rir-service.-1.1025: new channel: 0x401 -> 0x401!
+[    5.000903] virtio_rpmsg_bus virtio0: creating channel i2c-service addr 0x402
+[    5.001723] riscv-pmu-sbi: SBI PMU extension is available
+[    5.008204] i2c_k1x virtio0.i2c-service.-1.1026: new channel: 0x402 -> 0x402!
+[    5.013598] riscv-pmu-sbi: 16 firmware and 18 hardware counters
+[    5.021989] virtio_rpmsg_bus virtio0: creating channel rcpu-pwr-management-service addr 0x403
+[    5.035613] k1x_rproc virtio0.rcpu-pwr-management-service.-1.1027: new channel: 0x403 -> 0x403!
+[    5.037457] es8326 2-0019: Can not read property hp-detect-gpio
+[    5.044496] virtio_rpmsg_bus virtio0: creating channel ruart-service1 addr 0x404
+[    5.050391] es8326 2-0019: Can not read property mic-detect-gpio
+[    5.054653] usb 1-1.3: Found UVC 1.00 device USB2.0 FHD UVC WebCam (04f2:b65e)
+[    5.057974] pxa_k1x virtio0.ruart-service1.-1.1028: new channel: 0x404 -> 0x404!
+[    5.063937] es8326 2-0019: assuming static mclk
+[    5.071766] c088d000.r_uart1: ttyS9 at MMIO 0xc088d000 (irq = 42330, base_baud = 1536000) is a UART10
+[    5.080368] NET: Registered PF_INET6 protocol family
+[    5.083955] virtio_rpmsg_bus virtio0: creating channel adma-service addr 0x405
+[    5.105112] adma_spacemit virtio0.adma-service.-1.1029: new channel: 0x405 -> 0x405!
+[    5.113790] Connection create success
+[    5.124431] Segment Routing with IPv6
+[    5.128276] In-situ OAM (IOAM) with IPv6
+[    5.132340] NET: Registered PF_PACKET protocol family
+[    5.137446] can: controller area network core
+[    5.141933] NET: Registered PF_CAN protocol family
+[    5.146786] can: raw protocol
+[    5.149769] can: broadcast manager protocol
+[    5.154001] can: netlink gateway - max_hops=1
+[    5.158613] Bluetooth: RFCOMM TTY layer initialized
+[    5.163545] Bluetooth: RFCOMM socket layer initialized
+[    5.168785] Bluetooth: RFCOMM ver 1.11
+[    5.171401] usb 1-1.4: new low-speed USB device number 4 using mv-ehci
+[    5.172576] Bluetooth: BNEP (Ethernet Emulation) ver 1.3
+[    5.175403] usb 2-1: new high-speed USB device number 2 using xhci-hcd
+[    5.191073] Bluetooth: BNEP filters: protocol multicast
+[    5.196318] Bluetooth: BNEP socket layer initialized
+[    5.201347] Bluetooth: HIDP (Human Interface Emulation) ver 1.2
+[    5.207307] Bluetooth: HIDP socket layer initialized
+[    5.212628] Key type dns_resolver registered
+[    5.226507] registered taskstats version 1
+[    5.230926] Loading compiled-in X.509 certificates
+[    5.244344] Key type .fscrypt registered
+[    5.248338] Key type fscrypt-provisioning registered
+[    5.253639] AppArmor: AppArmor sha1 policy hashing enabled
+[    5.259457] ima: No TPM chip found, activating TPM-bypass!
+[    5.265027] Loading compiled-in module X.509 certificates
+[    5.274043] Loaded X.509 cert 'Build time autogenerated kernel key: 998c1b62be132dc9250446b2968e485cb6cb47ad'
+[    5.284087] ima: Allocated hash algorithm: sha1
+[    5.288686] ima: No architecture policies found
+[    5.299904] input: HS-KX312  -US-01-01- USB Keyboard as /devices/platform/soc/c0980100.ehci1/usb1/1-1/1-1.4/1-1.4:1.0/0003:1C4F:0043.0001/input/input2
+[    5.304707] suspend: SBI SUSP extension detected
+[    5.318776] [drm] spacemit_dpu_bind()
+[    5.322832] spacemit-dpu-drv soc:port@c0340000: assigned reserved memory node dpu_reserved@2ff40000
+[    5.332447] [drm] dpu plane init ok
+[    5.336022] spacemit-drm-drv c0340000.display-subsystem-dsi: bound soc:port@c0340000 (ops dpu_component_ops)
+[    5.336107] hub 2-1:1.0: USB hub found
+[    5.345969] [drm] find possible crtcs: 0x00000001
+[    5.349986] hub 2-1:1.0: 5 ports detected
+[    5.354604] spacemit-drm-drv c0340000.display-subsystem-dsi: bound d421a800.dsi2 (ops dsi_component_ops)
+[    5.368128] spacemit-drm-drv c0340000.display-subsystem-dsi: bound soc:wb0 (ops spacemit_wb_component_ops)
+[    5.371830] hid-generic 0003:1C4F:0043.0001: input: USB HID v1.11 Keyboard [HS-KX312  -US-01-01- USB Keyboard] on usb-mv-ehci1-1.4/input0
+[    5.390594] [drm] Initialized spacemit 1.0.0 20231115 for c0340000.display-subsystem-dsi on minor 1
+[    5.394164] input: HS-KX312  -US-01-01- USB Keyboard Consumer Control as /devices/platform/soc/c0980100.ehci1/usb1/1-1/1-1.4/1-1.4:1.1/0003:1C4F:0043.0002/input/input3
+[    5.415433] [drm] spacemit_crtc_atomic_enable(power on)
+[    5.417065] [drm] pxclk set_clk_val 142857000
+[    5.417273] [drm] dpu_init 
+[    5.417327] [drm] spacemit_dsi_encoder_enable()
+[    5.418343] [drm] lt8911exb_panel_enable()
+[    5.418465] [drm] DPU type 1 id 2 Start!
+[    5.436579] Console: switching to colour frame buffer device 240x67
+[    5.455516] usb 3-1: new SuperSpeed USB device number 2 using xhci-hcd
+[    5.457353] input: hid-over-i2c 0911:5288 Mouse as /devices/platform/soc/d4012800.i2c/i2c-4/4-002d/0018:0911:5288.0003/input/input5
+[    5.480229] input: HS-KX312  -US-01-01- USB Keyboard System Control as /devices/platform/soc/c0980100.ehci1/usb1/1-1/1-1.4/1-1.4:1.1/0003:1C4F:0043.0002/input/input4
+[    5.480395] input: hid-over-i2c 0911:5288 Touchpad as /devices/platform/soc/d4012800.i2c/i2c-4/4-002d/0018:0911:5288.0003/input/input6
+[    5.483136] spacemit-drm-drv c0340000.display-subsystem-dsi: [drm] fb0: spacemitdrmfb frame buffer device
+[    5.557333] hid-generic 0003:1C4F:0043.0002: input: USB HID v1.11 Device [HS-KX312  -US-01-01- USB Keyboard] on usb-mv-ehci1-1.4/input1
+[    5.557518] hid-multitouch 0018:0911:5288.0003: input: I2C HID v1.00 Mouse [hid-over-i2c 0911:5288] on 4-002d
+[    5.570327] spacemit-socinfo soc:socinfo@0: Spacemit: CPU[M1-8571] REV[C] DRO[133] Detected
+[    5.589430] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+[    5.598491] Loaded X.509 cert 'sforshee: 00b28ddf47aef9cea7'
+[    5.604994] Loaded X.509 cert 'wens: 61c038651aabdcf94bd0ac7ff06c7248db18c600'
+[    5.613400] clk: Not disabling unused clocks
+[    5.618416] [drm] spacemit_dpu_bind()
+[    5.622382] spacemit-dpu-drv soc:port@c0440000: assigned reserved memory node dpu_reserved@2ff40000
+[    5.631858] [drm] dpu plane init ok
+[    5.635419] spacemit-drm-drv c0440000.display-subsystem-hdmi: bound soc:port@c0440000 (ops dpu_component_ops)
+[    5.645597] [drm] set hdmi mclk=491520000
+[    5.649995] spacemit-drm-drv c0440000.display-subsystem-hdmi: bound c0400500.hdmi (ops spacemit_hdmi_ops)
+[    5.659839] [drm] spacemit_hdmi_connector_detect() hdmi status disconnected
+[    5.667325] [drm] Initialized spacemit 1.0.0 20231115 for c0440000.display-subsystem-hdmi on minor 2
+[    5.676579] [drm] spacemit_hdmi_connector_detect() hdmi status disconnected
+[    5.683635] spacemit-drm-drv c0440000.display-subsystem-hdmi: [drm] Cannot find any crtc or sizes
+[    5.693437] enter spacemit_snd_sspa_pdev_probe
+[    5.699282] ALSA device list:
+[    5.702355]   No soundcards found.
+[    5.706993] Freeing unused kernel image (initmem) memory: 2304K
+[    5.716088] Checked W+X mappings: passed, no W+X pages found
+[    5.721829] Run /init as init process
+[    5.725535]   with arguments:
+[    5.725542]     /init
+[    5.725546]   with environment:
+[    5.725551]     HOME=/
+[    5.725554]     TERM=linux
+[    5.728431] hub 3-1:1.0: USB hub found
+[    5.732567] hub 3-1:1.0: 4 ports detected
+[    5.759686] systemd[1]: Inserted module 'autofs4'
+[    5.777805] systemd[1]: Successfully made /usr/ read-only.
+[    5.795501] systemd[1]: systemd 256-3.fc41 running in system mode (+PAM +AUDIT +SELINUX -APPARMOR +IMA +SMACK +SECCOMP -GCRYPT +GNUTLS +OPENSSL +ACL +BLKID +CURL +ELFUTILS +FIDO2 +IDN2 -IDN -IPTC +KMOD +LIBCRYPTSETUP +LIBCRYPTSETUP_PLUGINS +LIBFDISK +PCRE2 +PWQUALITY +P11KIT +QRENCODE +TPM2 +BZIP2 +LZ4 +XZ +ZLIB +ZSTD +BPF_FRAMEWORK +XKBCOMMON +UTMP +SYSVINIT +LIBARCHIVE)
+[    5.828805] systemd[1]: Detected architecture riscv64.
+[    5.834024] systemd[1]: Running in initrd.
+[    5.855987] systemd[1]: Hostname set to <fedora-riscv>.
+[    5.861659] systemd[1]: Initializing machine ID from random generator.
+[    6.111613] k1x-ci-otg mv-otg: start host
+[    6.115707] mv-ehci mv-ehci: Spacemit EHCI
+[    6.119915] mv-ehci mv-ehci: new USB bus registered, assigned bus number 4
+[    6.127088] mv-ehci mv-ehci: irq 89, io mem 0xc0900100
+[    6.147405] mv-ehci mv-ehci: USB 2.0 started, EHCI 1.00
+[    6.153488] hub 4-0:1.0: USB hub found
+[    6.157348] hub 4-0:1.0: 1 port detected
+[    6.234828] systemd[1]: Queued start job for default target initrd.target.
+[    6.263414] usb 2-1.5: new high-speed USB device number 3 using xhci-hcd
+[    6.277923] systemd[1]: Expecting device dev-disk-by\x2duuid-9b226192\x2d90e9\x2d4694\x2da253\x2dafe05230538f.device - /dev/disk/by-uuid/9b226192-90e9-4694-a253-afe05230538f...
+[    6.311761] systemd[1]: Reached target initrd-usr-fs.target - Initrd /usr File System.
+[    6.335759] systemd[1]: Reached target slices.target - Slice Units.
+[    6.348381] input: snd-es8326 Headset Jack as /devices/platform/snd-card@1/sound/card1/input7
+[    6.358619] systemd[1]: Reached target swap.target - Swaps.
+[    6.379753] systemd[1]: Reached target timers.target - Timer Units.
+[    6.400300] systemd[1]: Listening on systemd-journald-dev-log.socket - Journal Socket (/dev/log).
+[    6.428293] systemd[1]: Listening on systemd-journald.socket - Journal Sockets.
+[    6.452403] systemd[1]: Listening on systemd-udevd-control.socket - udev Control Socket.
+[    6.476155] systemd[1]: Listening on systemd-udevd-kernel.socket - udev Kernel Socket.
+[    6.499681] systemd[1]: Reached target sockets.target - Socket Units.
+[    6.525972] systemd[1]: Starting kmod-static-nodes.service - Create List of Static Device Nodes...
+[    6.551892] systemd[1]: memstrack.service - Memstrack Anylazing Service was skipped because no trigger condition checks were met.
+[    6.587850] systemd[1]: Starting systemd-journald.service - Journal Service...
+[    6.612851] systemd[1]: Starting systemd-modules-load.service - Load Kernel Modules...
+[    6.639705] systemd[1]: systemd-pcrphase-initrd.service - TPM PCR Barrier (initrd) was skipped because of an unmet condition check (ConditionSecurity=measured-uki).
+[    6.675620] systemd[1]: Starting systemd-vconsole-setup.service - Virtual Console Setup...
+[    6.708304] systemd[1]: Finished kmod-static-nodes.service - Create List of Static Device Nodes.
+[    6.739668] systemd[1]: Finished systemd-modules-load.service - Load Kernel Modules.
+[    6.745441] systemd-journald[240]: Collecting audit messages is disabled.
+[    6.760334] systemd[1]: Starting systemd-sysctl.service - Apply Kernel Variables...
+[    6.828888] systemd[1]: Starting systemd-tmpfiles-setup-dev-early.service - Create Static Device Nodes in /dev gracefully...
+[    6.881281] systemd[1]: Finished systemd-sysctl.service - Apply Kernel Variables.
+[    6.976947] systemd[1]: Finished systemd-tmpfiles-setup-dev-early.service - Create Static Device Nodes in /dev gracefully.
+[    6.989520] systemd[1]: Started systemd-journald.service - Journal Service.
+[   11.288219] EXT4-fs (mmcblk0p6): mounted filesystem 9b226192-90e9-4694-a253-afe05230538f r/w with ordered data mode. Quota mode: none.
+[   15.830644] systemd-journald[240]: Received SIGTERM from PID 1 (systemd).
+[   16.239758] systemd[1]: systemd 256-3.fc41 running in system mode (+PAM +AUDIT +SELINUX -APPARMOR +IMA +SMACK +SECCOMP -GCRYPT +GNUTLS +OPENSSL +ACL +BLKID +CURL +ELFUTILS +FIDO2 +IDN2 -IDN -IPTC +KMOD +LIBCRYPTSETUP +LIBCRYPTSETUP_PLUGINS +LIBFDISK +PCRE2 +PWQUALITY +P11KIT +QRENCODE +TPM2 +BZIP2 +LZ4 +XZ +ZLIB +ZSTD +BPF_FRAMEWORK +XKBCOMMON +UTMP +SYSVINIT +LIBARCHIVE)
+[   16.273089] systemd[1]: Detected architecture riscv64.
+[   16.368944] systemd[1]: memfd_create() called without MFD_EXEC or MFD_NOEXEC_SEAL set
+[   16.676060] systemd[1]: bpf-restrict-fs: BPF LSM hook not enabled in the kernel, BPF LSM not supported.
+[   19.307389] random: crng init done
+[   22.350966] systemd[1]: run-credentials-systemd\x2djournald.service.mount: Deactivated successfully.
+[   22.364106] systemd[1]: initrd-switch-root.service: Deactivated successfully.
+[   22.378865] systemd[1]: Stopped initrd-switch-root.service - Switch Root.
+[   22.395780] systemd[1]: systemd-journald.service: Scheduled restart job, restart counter is at 1.
+[   22.410958] systemd[1]: Created slice machine.slice - Virtual Machine and Container Slice.
+[   22.426901] systemd[1]: Created slice system-getty.slice - Slice /system/getty.
+[   22.441829] systemd[1]: Created slice system-serial\x2dgetty.slice - Slice /system/serial-getty.
+[   22.457332] systemd[1]: Created slice system-sshd\x2dkeygen.slice - Slice /system/sshd-keygen.
+[   22.472832] systemd[1]: Created slice system-systemd\x2dzram\x2dsetup.slice - Slice /system/systemd-zram-setup.
+[   22.488624] systemd[1]: Created slice user.slice - User and Session Slice.
+[   22.499597] systemd[1]: systemd-ask-password-console.path - Dispatch Password Requests to Console Directory Watch was skipped because of an unmet condition check (ConditionPathExists=!/run/plymouth/pid).
+[   22.521830] systemd[1]: Started systemd-ask-password-wall.path - Forward Password Requests to Wall Directory Watch.
+[   22.536615] systemd[1]: Set up automount proc-sys-fs-binfmt_misc.automount - Arbitrary Executable File Formats File System Automount Point.
+[   22.553069] systemd[1]: Expecting device dev-disk-by\x2duuid-a69342a5\x2d8ab5\x2d4088\x2d8ed7\x2dc501b3a25044.device - /dev/disk/by-uuid/a69342a5-8ab5-4088-8ed7-c501b3a25044...
+[   22.572251] systemd[1]: Expecting device dev-ttyS0.device - /dev/ttyS0...
+[   22.582544] systemd[1]: Expecting device dev-zram0.device - /dev/zram0...
+[   22.592970] systemd[1]: Reached target cryptsetup.target - Local Encrypted Volumes.
+[   22.604314] systemd[1]: Stopped target initrd-switch-root.target - Switch Root.
+[   22.615016] systemd[1]: Stopped target initrd-fs.target - Initrd File Systems.
+[   22.625785] systemd[1]: Stopped target initrd-root-fs.target - Initrd Root File System.
+[   22.637365] systemd[1]: Reached target integritysetup.target - Local Integrity Protected Volumes.
+[   22.649872] systemd[1]: Reached target paths.target - Path Units.
+[   22.659473] systemd[1]: Reached target slices.target - Slice Units.
+[   22.669649] systemd[1]: Reached target veritysetup.target - Local Verity Protected Volumes.
+[   22.681971] systemd[1]: Listening on dm-event.socket - Device-mapper event daemon FIFOs.
+[   22.694387] systemd[1]: Listening on lvm2-lvmpolld.socket - LVM2 poll daemon socket.
+[   22.714916] systemd[1]: Listening on systemd-coredump.socket - Process Core Dump Socket.
+[   22.732626] systemd[1]: Listening on systemd-creds.socket - Credential Encryption/Decryption.
+[   22.745311] systemd[1]: Listening on systemd-initctl.socket - initctl Compatibility Named Pipe.
+[   22.758883] systemd[1]: Listening on systemd-journald-audit.socket - Journal Audit Socket.
+[   22.771477] systemd[1]: Listening on systemd-mountfsd.socket - DDI File System Mounter Socket.
+[   22.784184] systemd[1]: Listening on systemd-nsresourced.socket - Namespace Resource Manager Socket.
+[   22.797895] systemd[1]: Listening on systemd-oomd.socket - Userspace Out-Of-Memory (OOM) Killer Socket.
+[   22.810761] systemd[1]: systemd-pcrextend.socket - TPM PCR Measurements was skipped because of an unmet condition check (ConditionSecurity=measured-uki).
+[   22.827815] systemd[1]: systemd-pcrlock.socket - Make TPM PCR Policy was skipped because of an unmet condition check (ConditionSecurity=measured-uki).
+[   22.845483] systemd[1]: Listening on systemd-udevd-control.socket - udev Control Socket.
+[   22.857829] systemd[1]: Listening on systemd-udevd-kernel.socket - udev Kernel Socket.
+[   22.870126] systemd[1]: Listening on systemd-userdbd.socket - User Database Manager Socket.
+[   22.888616] systemd[1]: Mounting dev-hugepages.mount - Huge Pages File System...
+[   22.905224] systemd[1]: Mounting dev-mqueue.mount - POSIX Message Queue File System...
+[   22.949979] systemd[1]: Mounting sys-kernel-debug.mount - Kernel Debug File System...
+[   22.966847] systemd[1]: Mounting sys-kernel-tracing.mount - Kernel Trace File System...
+[   22.979607] systemd[1]: auth-rpcgss-module.service - Kernel Module supporting RPCSEC_GSS was skipped because of an unmet condition check (ConditionPathExists=/etc/krb5.keytab).
+[   23.001779] systemd[1]: iscsi-starter.service was skipped because of an unmet condition check (ConditionDirectoryNotEmpty=/var/lib/iscsi/nodes).
+[   23.025117] systemd[1]: Starting kmod-static-nodes.service - Create List of Static Device Nodes...
+[   23.044611] systemd[1]: Starting lvm2-monitor.service - Monitoring of LVM2 mirrors, snapshots etc. using dmeventd or progress polling...
+[   23.067294] systemd[1]: Starting modprobe@configfs.service - Load Kernel Module configfs...
+[   23.086324] systemd[1]: Starting modprobe@dm_mod.service - Load Kernel Module dm_mod...
+[   23.105417] systemd[1]: Starting modprobe@dm_multipath.service - Load Kernel Module dm_multipath...
+[   23.125732] systemd[1]: Starting modprobe@drm.service - Load Kernel Module drm...
+[   23.144163] systemd[1]: Starting modprobe@efi_pstore.service - Load Kernel Module efi_pstore...
+[   23.164302] systemd[1]: Starting modprobe@fuse.service - Load Kernel Module fuse...
+[   23.182626] systemd[1]: Starting modprobe@loop.service - Load Kernel Module loop...
+[   23.194604] systemd[1]: plymouth-switch-root.service: Deactivated successfully.
+[   23.206046] systemd[1]: Stopped plymouth-switch-root.service - Plymouth switch root service.
+[   23.219583] systemd[1]: systemd-hibernate-clear.service - Clear Stale Hibernate Storage Info was skipped because of an unmet condition check (ConditionPathExists=/sys/firmware/efi/efivars/HibernateLocation-8cf2644b-4b0b-428f-9387-6d876050dc67).
+[   23.254942] systemd[1]: Starting systemd-journald.service - Journal Service...
+[   23.275357] systemd[1]: Starting systemd-modules-load.service - Load Kernel Modules...
+[   23.293057] systemd[1]: Starting systemd-network-generator.service - Generate network units from Kernel command line...
+[   23.307392] systemd[1]: systemd-pcrmachine.service - TPM PCR Machine ID Measurement was skipped because of an unmet condition check (ConditionSecurity=measured-uki).
+[   23.344244] systemd[1]: Starting systemd-remount-fs.service - Remount Root and Kernel File Systems...
+[   23.357429] systemd[1]: systemd-tpm2-setup-early.service - Early TPM SRK Setup was skipped because of an unmet condition check (ConditionSecurity=measured-uki).
+[   23.382370] systemd[1]: Starting systemd-udev-load-credentials.service - Load udev Rules from Credentials...
+[   23.402759] systemd[1]: Starting systemd-udev-trigger.service - Coldplug All udev Devices...
+[   23.430078] systemd-journald[477]: Collecting audit messages is enabled.
+[   23.434898] systemd[1]: Mounted dev-hugepages.mount - Huge Pages File System.
+[   23.452039] systemd[1]: Mounted dev-mqueue.mount - POSIX Message Queue File System.
+[   23.456982] EXT4-fs (mmcblk0p6): re-mounted 9b226192-90e9-4694-a253-afe05230538f r/w. Quota mode: none.
+[   23.482196] systemd[1]: Started systemd-journald.service - Journal Service.
+[   23.493535] audit: type=1130 audit(1729232852.564:2): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='unit=systemd-journald comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[   23.524075] audit: type=1130 audit(1729232852.596:3): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='unit=kmod-static-nodes comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[   23.548301] audit: type=1130 audit(1729232852.620:4): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='unit=lvm2-monitor comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[   23.571770] audit: type=1130 audit(1729232852.644:5): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='unit=modprobe@configfs comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[   23.595246] audit: type=1131 audit(1729232852.644:6): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='unit=modprobe@configfs comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[   23.619021] audit: type=1130 audit(1729232852.668:7): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='unit=modprobe@dm_mod comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[   23.642660] audit: type=1131 audit(1729232852.668:8): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='unit=modprobe@dm_mod comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[   23.666331] audit: type=1130 audit(1729232852.688:9): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='unit=modprobe@dm_multipath comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[   23.690526] audit: type=1131 audit(1729232852.692:10): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='unit=modprobe@dm_multipath comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[   23.714759] audit: type=1130 audit(1729232852.712:11): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='unit=modprobe@drm comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[   23.914386] systemd-journald[477]: Received client request to flush runtime journal.
+[   25.938525] zram0: detected capacity change from 0 to 16209920
+[   26.367680] Adding 8104956k swap on /dev/zram0.  Priority:100 extents:1 across:8104956k SSDsc
+[   26.459088] EXT4-fs (mmcblk0p5): mounted filesystem a69342a5-8ab5-4088-8ed7-c501b3a25044 r/w with ordered data mode. Quota mode: none.
+[   27.637938] RTW: module init start
+[   27.641461] RTW: rtl8852be v1.19.11-175-g5130b5e2d.20240429
+[   27.647148] RTW: build time: Oct  9 2024 20:21:39
+[   27.647159] RTW: 
+[   27.647162] RTW: =======================================================
+[   27.647166] RTW: ==== Launching Wi-Fi driver! (Powered by Spacemit) ====
+[   27.647169] RTW: =======================================================
+[   27.647171] RTW: Realtek rtl8852be WiFi driver (Powered by Spacemit,Ver v1.19.11-175-g5130b5e2d.20240429) init.
+[   27.647184] spacemit-rf-pwrseq rf-pwrseq: turn power on
+[   27.732107] spacemit-bt rf-pwrseq:bt-pwrseq: block state already is 1
+[   27.819837] rtl8852be 0001:01:00.0: enabling device (0000 -> 0003)
+[   27.827214] PHL: [MAC] MAC_AX_MAJOR_VER = 0
+               MAC_AX_PROTOTYPE_VER = 29
+               MAC_AX_SUB_VER = 71
+               MAC_AX_SUB_INDEX = 0
+[   27.842822] PHL: rtw_hal_mac_get_log_efuse_size: Logical efuse size = 2064!
+[   27.853162] PHL: rtw_hal_mac_get_log_efuse_size: Logical efuse size = 1296!
+[   27.853186] PHL: rtw_hal_mac_get_efuse_a_die_size: Efuse a die size = 16!
+[   27.853191] PHL: rtw_hal_mac_get_efuse_mask_size: efuse mask size = 129
+[   27.853221] PHL: rtw_hal_mac_get_efuse_mask_size: efuse mask size = 81
+[   27.853256] PHL: rtw_hal_mac_get_log_efuse_bt_size: BT Efuse log size = 1024!
+[   27.853282] PHL: rtw_hal_mac_get_efuse_bt_mask_size: bt efuse mask size = 64
+[   27.853779] PHL: [BTC], hal_btc_init(): Init 8852B!!
+[   27.853817] PHL: [MAC-INFO]- CV : 1
+[   27.853824] PHL: [MAC-INFO]- ACV : 1
+[   27.853826] PHL: [MAC-INFO]- FV : 255
+[   27.853829] PHL: [MAC-INFO]- tx_ch_num: 19
+[   27.853832] PHL: [MAC-INFO]- tx_data_ch_num: 10
+[   27.853835] PHL: [MAC-INFO]- wd_body_len: 24
+[   27.853838] PHL: [MAC-INFO]- wd_info_len: 24
+[   27.853840] PHL: [MAC-INFO]- pwr_seq_ver: 22
+[   27.853843] PHL: [MAC-INFO]- fifo_size: 196608
+[   27.853846] PHL: [MAC-INFO]- macid_num: 32
+[   27.853848] PHL: [MAC-INFO]- wl_efuse_size: 1536
+[   27.853851] PHL: [MAC-INFO]- efuse_size: 1216
+[   27.853854] PHL: [MAC-INFO]- log_efuse_size: 2048
+[   27.853857] PHL: [MAC-INFO]- bt_efuse_size: 512
+[   27.853860] PHL: [MAC-INFO]- sec_ctrl_efuse_size: 4
+[   27.853862] PHL: [MAC-INFO]- sec_data_efuse_size: 192
+[   27.853870] PHL: hal_init_int_default_value_8852be : 03180005, 00000000, 00200000, 00000020
+[   27.854050] PHL: phl_msg_hub_init
+[   27.854163] PHL: [TM]: phl_test_module_init
+[   27.854216] PHL: _dispr_ctrl_init(): 
+[   27.854277] PHL: _phl_ser_mdl_init:: cser->evtsrc = 1
+[   27.854285] PHL: [PS_CMD], phl_register_ps_module(): 
+[   27.854303] PHL: [PS_CMD], _ps_mdl_init(): 
+[   27.854325] PHL: [PS_CMD], _ps_common_info_init(): 
+[   27.854344] PHL: [BTCCMD], phl_register_btc_module(): 
+[   27.854361] PHL: [BTCCMD], _btc_cmd_init(): 
+[   27.854460] PHL: --> _phl_snd_cmd_module_init
+[   27.854485] PHL: phl_macid_ctrl_init macid max_num:32
+[   27.859425] PHL: [PSTA] ###### FUN - phl_stainfo_ctrl_init LINE - 1001 #######
+[   27.859445] PHL: [PSTA] PHL_MAX_STA_NUM:128
+[   27.859449] PHL: [PSTA] sta_ctrl - q_cnt :128
+[   27.859453] PHL: #################################
+[   28.238659] eric-tx CALL alloc_txring !!!!
+[   28.243429] usb 1-1.1: new full-speed USB device number 5 using mv-ehci
+[   28.246737] RTW: rtw_rfctl_decide_init_chplan chplan:0x7F
+[   28.265907] RTW: rtw_ndev_init(wlan0) if1 mac_addr=44:87:63:e4:ab:e9
+[   28.277191] RTW: module init ret=0
+[   28.336958] rtl8852be 0001:01:00.0 wlP1p1s0: renamed from wlan0
+[   28.448841] usbcore: registered new interface driver btusb
+[   28.455430] Bluetooth: hci0: RTL: examining hci_ver=0b hci_rev=000b lmp_ver=0b lmp_subver=8852
+[   28.471447] Bluetooth: hci0: RTL: rom_version status=0 version=1
+[   28.480896] Bluetooth: hci0: RTL: loading rtl_bt/rtl8852bu_fw.bin
+[   28.517675] Bluetooth: hci0: RTL: loading rtl_bt/rtl8852bu_config.bin
+[   28.527032] Bluetooth: hci0: RTL: cfg_sz 6, total sz 58003
+[   28.981187] usb 1-1.1: USB disconnect, device number 5
+[   28.991503] Bluetooth: hci0: RTL: download fw command failed (-19)
+[   33.272442] RTW: default domain:0x7f applied, txpwr_lmt:WW
+[   33.298871] [BB][halbb_la_bb_set_smp_rate] smp_rate_tmp=7, la_smp_rate_log=160 M
+[   33.357553] RTW: [PHL STA]- role-idx: 0
+[   33.361566] RTW: [PHL STA]- mac_addr:44:87:63:e4:ab:e9
+[   33.366836] RTW: [PHL STA]- aid: 0
+[   33.370425] RTW: [PHL STA]- macid: 0
+[   33.377447] RTW: [PHL STA]- wifi_band: 1
+[   33.381616] RTW: [PHL STA]- bw: 0
+[   33.384958] RTW: [PHL STA]- chan: 36
+[   33.392026] RTW: [PHL STA]- offset: 0
+[   33.434135] RTW: [PHL STA]- role-idx: 0
+[   33.438044] RTW: [PHL STA]- mac_addr:aa:c7:99:c6:05:9e
+[   33.443251] RTW: [PHL STA]- aid: 0
+[   33.446696] RTW: [PHL STA]- macid: 0
+[   33.450314] RTW: [PHL STA]- wifi_band: 1
+[   33.454282] RTW: [PHL STA]- bw: 0
+[   33.461073] RTW: [PHL STA]- chan: 36
+[   33.464731] RTW: [PHL STA]- offset: 0
+[   33.571524] usb 1-1.1: new full-speed USB device number 6 using mv-ehci
+[   33.689335] Bluetooth: hci0: RTL: examining hci_ver=0b hci_rev=000b lmp_ver=0b lmp_subver=8852
+[   33.699430] Bluetooth: hci0: RTL: rom_version status=0 version=1
+[   33.705772] Bluetooth: hci0: RTL: loading rtl_bt/rtl8852bu_fw.bin
+[   33.729078] Bluetooth: hci0: RTL: loading rtl_bt/rtl8852bu_config.bin
+[   33.740849] Bluetooth: hci0: RTL: cfg_sz 6, total sz 58003
+[   34.358438] usb 1-1.1: USB disconnect, device number 6
+[   34.366444] Bluetooth: hci0: RTL: download fw command failed (-19)
+[   37.603847] RTW: [PHL STA]- role-idx: 0
+[   37.607748] RTW: [PHL STA]- mac_addr:d2:43:cc:d6:87:96
+[   37.612943] RTW: [PHL STA]- aid: 0
+[   37.616384] RTW: [PHL STA]- macid: 0
+[   37.619989] RTW: [PHL STA]- wifi_band: 1
+[   37.623970] RTW: [PHL STA]- bw: 0
+[   37.627313] RTW: [PHL STA]- chan: 36
+[   37.634394] RTW: [PHL STA]- offset: 0
+[   37.718070] RTW: rtw_set_802_11_connect(wlP1p1s0)  fw_state=0x00000008
+[   37.726159] RTW: ERROR _connect_msg_hdlr(wlP1p1s0): assoc_AP_vendor gone!
+[   37.733174] RTW: [PHL STA]- role-idx: 0
+[   37.740441] RTW: [PHL STA]- mac_addr:54:2b:de:a5:b9:60
+[   37.748371] RTW: [PHL STA]- aid: 0
+[   37.751841] RTW: [PHL STA]- macid: 0
+[   37.758887] RTW: [PHL STA]- wifi_band: 1
+[   37.766029] RTW: [PHL STA]- bw: 0
+[   37.769366] RTW: [PHL STA]- chan: 36
+[   37.773124] RTW: [PHL STA]- offset: 0
+[   37.885645] RTW: start auth
+[   37.889601] RTW: auth success, start assoc
+[   37.896667] RTW: assoc success
+[   37.903463] RTW: Updated A-MPDU number to 64 as default for 54:2b:de:a5:b9:60
+[   37.903468] RTW: recv eapol packet 1/4
+[   37.915448] RTW: send eapol packet 2/4
+[   37.916606] RTW: [PHL STA]- role-idx: 0
+[   37.929573] RTW: [PHL STA]- mac_addr:54:2b:de:a5:b9:60
+[   37.931115] RTW: recv eapol packet 3/4
+[   37.938045] RTW: [PHL STA]- aid: 1
+[   37.945635] RTW: send eapol packet 4/4
+[   37.951801] RTW: [PHL STA]- macid: 0
+[   37.956286] RTW: setkey_hdl: set group key for 54:2b:de:a5:b9:60, kid:1 type:1 algo:AES
+[   37.959233] RTW: [PHL STA]- wifi_band: 1
+[   37.975099] RTW: [PHL STA]- bw: 2
+[   37.978521] RTW: [PHL STA]- chan: 36
+[   37.982166] RTW: [PHL STA]- offset: 1
+[   45.804314] PVR_K:  1049: RGX Firmware image 'rgx.fw.36.29.52.182' loaded
+[   45.827576] PVR_K:  1049: Shader binary image 'rgx.sh.36.29.52.182' loaded
+[   45.947781] [drm] spacemit_hdmi_connector_detect() hdmi status disconnected
+[   72.168953] RTW: rtw_set_country_cmd country_code:"HK"
+[   72.174290] RTW: default domain:0x5e applied, txpwr_lmt:ETSI
+[   94.961259] [drm] spacemit_hdmi_connector_detect() hdmi status disconnected
+[  112.362366] RTW: ssid = CASXM (len = 5)
+[  112.366373] RTW: ch = 1,36,2,1
+[  112.369487] RTW: proto_cap = 0x0e
+[  112.372936] RTW: rate_set = 8C 12 98 24  B0 48 60 6C  
+[  112.378274] RTW: sec = 3
+[  112.380847] RTW: GTK = 0x10 [CCMP]
+[  112.384386] RTW: PTK = 0x10 [CCMP]
+[  112.388031] RTW: AKM = 0x00000002 [PSK]
+[  112.392059] RTW: ssid = CASXM (len = 5)
+[  112.395998] RTW: ch = 0,6,0,0
+[  112.399196] RTW: proto_cap = 0x07
+[  112.402731] RTW: rate_set = 82 84 8B 96  0C 12 18 24  30 48 60 6C  
+[  112.409193] RTW: sec = 3
+[  112.411815] RTW: GTK = 0x10 [CCMP]
+[  112.415333] RTW: PTK = 0x10 [CCMP]
+[  112.418847] RTW: AKM = 0x00000002 [PSK]
+[  112.422820] RTW: OnProbeRsp(wlP1p1s0) ap has changed, disconnect now
+[  119.667141] RTW: [PHL STA]- role-idx: 0
+[  119.671093] RTW: [PHL STA]- mac_addr:54:2b:de:a5:b9:60
+[  119.677730] RTW: [PHL STA]- aid: 1
+[  119.681301] RTW: [PHL STA]- macid: 0
+[  119.686824] RTW: [PHL STA]- wifi_band: 1
+[  119.691676] RTW: [PHL STA]- bw: 2
+[  119.696505] RTW: [PHL STA]- chan: 36
+[  119.700145] RTW: [PHL STA]- offset: 1
+[  119.704081] RTW: [PHL STA]- role-idx: 0
+[  119.708044] RTW: [PHL STA]- mac_addr:d2:43:cc:d6:87:96
+[  119.713270] RTW: [PHL STA]- aid: 1
+[  119.716726] RTW: [PHL STA]- macid: 0
+[  119.720361] RTW: [PHL STA]- wifi_band: 1
+[  119.724370] RTW: [PHL STA]- bw: 2
+[  119.727799] RTW: [PHL STA]- chan: 36
+[  119.731450] RTW: [PHL STA]- offset: 1
+[  120.218388] RTW: rtw_set_802_11_connect(wlP1p1s0)  fw_state=0x00000008
+[  120.225513] RTW: ERROR _connect_msg_hdlr(wlP1p1s0): assoc_AP_vendor gone!
+[  120.235273] RTW: [PHL STA]- role-idx: 0
+[  120.239294] RTW: [PHL STA]- mac_addr:54:2b:de:a5:b9:70
+[  120.244857] RTW: [PHL STA]- aid: 1
+[  120.250431] RTW: [PHL STA]- macid: 0
+[  120.254607] RTW: [PHL STA]- wifi_band: 1
+[  120.260888] RTW: [PHL STA]- bw: 2
+[  120.264469] RTW: [PHL STA]- chan: 36
+[  120.268310] RTW: [PHL STA]- offset: 1
+[  120.426830] RTW: start auth
+[  120.432132] RTW: auth success, start assoc
+[  120.440814] RTW: assoc success
+[  120.444239] RTW: Updated A-MPDU number to 64 as default for 54:2b:de:a5:b9:70
+[  120.451891] RTW: recv eapol packet 1/4
+[  120.456822] RTW: send eapol packet 2/4
+[  120.465871] RTW: [PHL STA]- role-idx: 0
+[  120.468127] RTW: recv eapol packet 3/4
+[  120.469916] RTW: [PHL STA]- mac_addr:54:2b:de:a5:b9:70
+[  120.474250] RTW: send eapol packet 4/4
+[  120.478895] RTW: [PHL STA]- aid: 1
+[  120.483795] RTW: setkey_hdl: set group key for 54:2b:de:a5:b9:70, kid:1 type:1 algo:AES
+[  120.486371] RTW: [PHL STA]- macid: 0
+[  120.500126] RTW: [PHL STA]- wifi_band: 0
+[  120.505637] RTW: [PHL STA]- bw: 0
+[  120.511855] RTW: [PHL STA]- chan: 11
+[  120.517824] RTW: [PHL STA]- offset: 0
+[  428.283131] RTW: OnDeAuth(wlP1p1s0) reason=6, ta=54:2b:de:a5:b9:70, ignore=0
+[  428.290627] RTW: OnDeAuth(wlP1p1s0) reason=6, ta=54:2b:de:a5:b9:70, ignore=0
+[  428.301141] RTW: [PHL STA]- role-idx: 0
+[  428.305077] RTW: [PHL STA]- mac_addr:54:2b:de:a5:b9:70
+[  428.310313] RTW: [PHL STA]- aid: 1
+[  428.313821] RTW: [PHL STA]- macid: 0
+[  428.317451] RTW: [PHL STA]- wifi_band: 0
+[  428.321458] RTW: [PHL STA]- bw: 0
+[  428.324831] RTW: [PHL STA]- chan: 11
+[  428.328430] RTW: [PHL STA]- offset: 0
+[  428.332674] RTW: [PHL STA]- role-idx: 0
+[  428.336636] RTW: [PHL STA]- mac_addr:d2:43:cc:d6:87:96
+[  428.341869] RTW: [PHL STA]- aid: 1
+[  428.345341] RTW: [PHL STA]- macid: 0
+[  428.348985] RTW: [PHL STA]- wifi_band: 0
+[  428.352965] RTW: [PHL STA]- bw: 0
+[  428.356299] RTW: [PHL STA]- chan: 11
+[  428.359936] RTW: [PHL STA]- offset: 0
+[  428.364075] RTW: rtw_set_802_11_connect(wlP1p1s0)  fw_state=0x00000008
+[  428.371076] RTW: ERROR _connect_msg_hdlr(wlP1p1s0): assoc_AP_vendor gone!
+[  428.378594] RTW: [PHL STA]- role-idx: 0
+[  428.382859] RTW: [PHL STA]- mac_addr:54:2b:de:a5:b9:60
+[  428.388270] RTW: [PHL STA]- aid: 1
+[  428.391944] RTW: [PHL STA]- macid: 0
+[  428.395997] RTW: [PHL STA]- wifi_band: 0
+[  428.400104] RTW: [PHL STA]- bw: 0
+[  428.404593] RTW: [PHL STA]- chan: 11
+[  428.408274] RTW: [PHL STA]- offset: 0
+[  428.559766] RTW: start auth
+[  428.563704] RTW: auth success, start assoc
+[  428.570158] RTW: assoc success
+[  428.573364] RTW: Updated A-MPDU number to 64 as default for 54:2b:de:a5:b9:60
+[  428.594218] RTW: [PHL STA]- role-idx: 0
+[  428.599281] RTW: [PHL STA]- mac_addr:54:2b:de:a5:b9:60
+[  428.604697] RTW: [PHL STA]- aid: 2
+[  428.608236] RTW: [PHL STA]- macid: 0
+[  428.611884] RTW: [PHL STA]- wifi_band: 1
+[  428.615856] RTW: [PHL STA]- bw: 2
+[  428.619200] RTW: [PHL STA]- chan: 36
+[  428.622797] RTW: [PHL STA]- offset: 1
+[  428.970406] RTW: recv eapol packet 1/4
+[  428.975093] RTW: send eapol packet 2/4
+[  428.980581] RTW: recv eapol packet 3/4
+[  428.984871] RTW: send eapol packet 4/4
+[  428.989470] RTW: setkey_hdl: set group key for 54:2b:de:a5:b9:60, kid:1 type:1 algo:AES
+[  729.007767] RTW: ssid = CASXM (len = 5)
+[  729.011696] RTW: ch = 1,36,2,1
+[  729.014781] RTW: proto_cap = 0x0e
+[  729.018138] RTW: rate_set = 8C 12 98 24  B0 48 60 6C  
+[  729.023396] RTW: sec = 3
+[  729.025968] RTW: GTK = 0x10 [CCMP]
+[  729.029402] RTW: PTK = 0x10 [CCMP]
+[  729.032854] RTW: AKM = 0x00000002 [PSK]
+[  729.036725] RTW: ssid = CASXM (len = 5)
+[  729.040603] RTW: ch = 0,6,0,0
+[  729.043608] RTW: proto_cap = 0x07
+[  729.046940] RTW: rate_set = 82 84 8B 96  0C 12 18 24  30 48 60 6C  
+[  729.053312] RTW: sec = 3
+[  729.055878] RTW: GTK = 0x10 [CCMP]
+[  729.059306] RTW: PTK = 0x10 [CCMP]
+[  729.062730] RTW: AKM = 0x00000002 [PSK]
+[  729.066588] RTW: OnBeacon(wlP1p1s0) ap has changed, disconnect now
+[  736.117999] RTW: [PHL STA]- role-idx: 0
+[  736.121946] RTW: [PHL STA]- mac_addr:54:2b:de:a5:b9:60
+[  736.127180] RTW: [PHL STA]- aid: 2
+[  736.130666] RTW: [PHL STA]- macid: 0
+[  736.134351] RTW: [PHL STA]- wifi_band: 1
+[  736.138373] RTW: [PHL STA]- bw: 2
+[  736.141773] RTW: [PHL STA]- chan: 36
+[  736.145459] RTW: [PHL STA]- offset: 1
+[  736.149718] RTW: [PHL STA]- role-idx: 0
+[  736.153684] RTW: [PHL STA]- mac_addr:d2:43:cc:d6:87:96
+[  736.158956] RTW: [PHL STA]- aid: 2
+[  736.162464] RTW: [PHL STA]- macid: 0
+[  736.166122] RTW: [PHL STA]- wifi_band: 1
+[  736.170142] RTW: [PHL STA]- bw: 2
+[  736.173543] RTW: [PHL STA]- chan: 36
+[  736.177211] RTW: [PHL STA]- offset: 1
+[  736.603492] RTW: rtw_set_802_11_connect(wlP1p1s0)  fw_state=0x00000008
+[  736.610551] RTW: ERROR _connect_msg_hdlr(wlP1p1s0): assoc_AP_vendor gone!
+[  736.617548] RTW: [PHL STA]- role-idx: 0
+[  736.621496] RTW: [PHL STA]- mac_addr:54:2b:de:a5:b9:70
+[  736.626760] RTW: [PHL STA]- aid: 2
+[  736.630243] RTW: [PHL STA]- macid: 0
+[  736.633898] RTW: [PHL STA]- wifi_band: 1
+[  736.637866] RTW: [PHL STA]- bw: 2
+[  736.641221] RTW: [PHL STA]- chan: 36
+[  736.644818] RTW: [PHL STA]- offset: 1
+[  736.719707] RTW: start auth
+[  736.730887] RTW: auth success, start assoc
+[  736.740728] RTW: assoc success
+[  736.743988] RTW: Updated A-MPDU number to 64 as default for 54:2b:de:a5:b9:70
+[  736.745332] RTW: recv eapol packet 1/4
+[  736.756196] RTW: send eapol packet 2/4
+[  736.764504] RTW: [PHL STA]- role-idx: 0
+[  736.768430] RTW: [PHL STA]- mac_addr:54:2b:de:a5:b9:70
+[  736.769398] RTW: recv eapol packet 3/4
+[  736.773628] RTW: [PHL STA]- aid: 1
+[  736.777893] RTW: send eapol packet 4/4
+[  736.780872] RTW: [PHL STA]- macid: 0
+[  736.780880] RTW: [PHL STA]- wifi_band: 0
+[  736.780883] RTW: [PHL STA]- bw: 0
+[  736.780885] RTW: [PHL STA]- chan: 11
+[  736.780888] RTW: [PHL STA]- offset: 0
+[  736.803796] RTW: setkey_hdl: set group key for 54:2b:de:a5:b9:70, kid:1 type:1 algo:AES
