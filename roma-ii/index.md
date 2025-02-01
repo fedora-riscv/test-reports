@@ -1,3 +1,9 @@
+---
+title: 'DC-ROMA II 测试报告'
+date: 2024-11-09T00:00:00+00:00
+summary: ' '
+---
+
 # 测试报告（DC-ROMA Ⅱ fedora）
 
 ## 测试总结
